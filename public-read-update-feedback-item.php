@@ -24,7 +24,7 @@ if ($session->is_logged_in()){
 
 			if ($feedback_item_to_read_update->update()){
 				$session->message("Success! The Feedback Item details have been changed. ");
-				redirect_to('public_list_feedback_items.php');
+				redirect_to('public-list-feedback-items.php');
 			} else {
 				$session->message("Error! The details of the Feedback Item could not be changed. ");
 			}
@@ -83,7 +83,7 @@ if ($session->is_logged_in()){
        	  <div class="span3">
 
 	       	  <div class="sidenav" data-spy="affix" data-offset-top="200">
-		      	<a href="public_list_feedback_items.php" class="btn btn-primary btn-block"><i class="icon-arrow-left icon-white"></i> Back to List of Feedback</a>
+		      	<a href="public-list-feedback-items.php" class="btn btn-primary btn-block"><i class="icon-arrow-left icon-white"></i> Back to List of Feedback</a>
 		      </div>
 
        	  </div>

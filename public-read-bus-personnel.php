@@ -28,7 +28,7 @@ if (!empty($_GET['personnelid'])){
 
 } else {
 	$session->message("No Bus Personnel ID provided to view.");
-	redirect_to("public_list_bus_personnel.php");
+	redirect_to("public-list-bus-personnel.php");
 }
 
 ?>
@@ -82,11 +82,11 @@ if (!empty($_GET['personnelid'])){
 
         <div class="span3">
 	        <div class="sidenav" data-spy="affix" data-offset-top="300">
-	        	<a href="public_list_bus_personnel.php" class="btn btn-primary btn-block"><i class="icon-arrow-left icon-white"></i> Back to List of Bus Personnel</a>
+	        	<a href="public-list-bus-personnel.php" class="btn btn-primary btn-block"><i class="icon-arrow-left icon-white"></i> Back to List of Bus Personnel</a>
 	        	<?php if (!empty($user->id)){ ?>
 	        	<br />
-	        	<a href="public_create_feedback.php" class="btn btn-success btn-block"><i class="icon-thumbs-up icon-white"></i> Give Feedback</a>
-	        	<a href="public_create_complaint.php" class="btn btn-danger btn-block"><i class="icon-exclamation-sign icon-white"></i> Create Complaint</a>
+	        	<a href="public-create-feedback.php" class="btn btn-success btn-block"><i class="icon-thumbs-up icon-white"></i> Give Feedback</a>
+	        	<a href="public-create-complaint.php" class="btn btn-danger btn-block"><i class="icon-exclamation-sign icon-white"></i> Create Complaint</a>
 	        	<br />
 	        	<div class="well">Feedback <span class="badge badge-success"><?php echo count($feedback_by_user); ?></span></div>
 	        	<div class="well">Complaints <span class="badge badge-important"><?php echo count($complaints_by_user); ?></span></div>
@@ -189,8 +189,8 @@ if (!empty($_GET['personnelid'])){
 
 	        	?>
         		<tr>
-	        		<td><a href="public_read_route.php?routeid=<?php echo $route_object->find_by_id($assigned_bus->route_id)->id; ?>" class="btn btn-primary btn-block"><?php echo $route_object->find_by_id($assigned_bus->route_id)->route_number; ?></a></td>
-	        		<td><a href="public_read_bus.php?busid=<?php echo $assigned_bus->id; ?>" class="btn btn-success btn-block"><?php echo $assigned_bus->reg_number; ?></a></td>
+	        		<td><a href="public-read-route.php?routeid=<?php echo $route_object->find_by_id($assigned_bus->route_id)->id; ?>" class="btn btn-primary btn-block"><?php echo $route_object->find_by_id($assigned_bus->route_id)->route_number; ?></a></td>
+	        		<td><a href="public-read-bus.php?busid=<?php echo $assigned_bus->id; ?>" class="btn btn-success btn-block"><?php echo $assigned_bus->reg_number; ?></a></td>
 	        		<td><?php echo $assigned_bus->name; ?></td>
         		</tr>
 	        	<?php } ?>

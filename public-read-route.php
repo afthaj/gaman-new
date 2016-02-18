@@ -27,7 +27,7 @@ if (isset($_GET['routeid'])) {
 	}
 } else {
 	$session->message("No Route ID provided to view.");
-	redirect_to("public_list_routes.php");
+	redirect_to("public-list-routes.php");
 }
 
 ?>
@@ -61,11 +61,11 @@ if (isset($_GET['routeid'])) {
 
         <div class="span3">
 	        <div class="sidenav" data-spy="affix" data-offset-top="150">
-	        	<a href="public_list_routes.php" class="btn btn-primary btn-block"><i class="icon-arrow-left icon-white"></i> Back to List of Bus Routes</a>
+	        	<a href="public-list-routes.php" class="btn btn-primary btn-block"><i class="icon-arrow-left icon-white"></i> Back to List of Bus Routes</a>
 	        	<?php if (!empty($user->id)){ ?>
 	        	<br />
-	        	<a href="public_create_feedback.php" class="btn btn-success btn-block"><i class="icon-thumbs-up icon-white"></i> Give Feedback</a>
-	        	<a href="public_create_complaint.php" class="btn btn-danger btn-block"><i class="icon-exclamation-sign icon-white"></i> Create Complaint</a>
+	        	<a href="public-create-feedback.php" class="btn btn-success btn-block"><i class="icon-thumbs-up icon-white"></i> Give Feedback</a>
+	        	<a href="public-create-complaint.php" class="btn btn-danger btn-block"><i class="icon-exclamation-sign icon-white"></i> Create Complaint</a>
 	        	<br />
 	        	<div class="well">Feedback <span class="badge badge-success"><?php echo count($feedback_by_user); ?></span></div>
 	        	<div class="well">Complaints <span class="badge badge-important"><?php echo count($complaints_by_user); ?></span></div>
@@ -113,7 +113,7 @@ if (isset($_GET['routeid'])) {
 	      				<li class="">&nbsp;</li>
 
 	      				<?php for ($i = 0; $i < count($stops_routes); $i++){ ?>
-			        		<li><a href="public_read_stop.php?stopid=<?php echo $stop_object->find_by_id($stops_routes[$i]->stop_id)->id; ?>" class="btn btn-success"><?php echo $stop_object->find_by_id($stops_routes[$i]->stop_id)->name; ?></a></li>
+			        		<li><a href="public-read-stop.php?stopid=<?php echo $stop_object->find_by_id($stops_routes[$i]->stop_id)->id; ?>" class="btn btn-success"><?php echo $stop_object->find_by_id($stops_routes[$i]->stop_id)->name; ?></a></li>
 			        		<?php if ( $i != count($stops_routes)-1 ) { echo '<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="icon-arrow-down"></i></li>'; } ?>
 		        		<?php } ?>
 

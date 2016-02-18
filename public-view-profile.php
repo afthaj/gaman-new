@@ -18,7 +18,7 @@ if ($session->is_logged_in()){
 
 			if ($user->update()){
 				$session->message("Success! Your details were updated. ");
-				redirect_to('public_view_profile.php');
+				redirect_to('public-view-profile.php');
 			} else {
 				$session->message("Error! Your details could not be updated. ");
 			}
@@ -32,7 +32,7 @@ if ($session->is_logged_in()){
 
 				if ($admin_user->update()){
 					$session->message("Success! The password was updated. ");
-					redirect_to('public_view_profile.php');
+					redirect_to('public-view-profile.php');
 				} else {
 					$session->message("Error! The user details could not be updated. ");
 				}
@@ -52,7 +52,7 @@ if ($session->is_logged_in()){
 
 			if ($photo->save()){
 				$session->message("Success! The photo was uploaded successfully. ");
-				redirect_to('public_view_profile.php');
+				redirect_to('public-view-profile.php');
 			} else {
 				$message = join("<br />", $photo->errors);
 			}
@@ -124,8 +124,8 @@ if ($session->is_logged_in()){
         <div class="span3">
 	        <div class="sidenav" data-spy="affix" data-offset-top="300">
 	        	<a href="index.php" class="btn btn-primary btn-block"><i class="icon-arrow-left icon-white"></i> Back to Home Page</a>
-	        	<a href="public_list_feedback_items.php" class="btn btn-success btn-block"><i class="icon-thumbs-up icon-white"></i> View Feedback Given</a>
-	        	<a href="public_list_complaints.php" class="btn btn-danger btn-block"><i class="icon-exclamation-sign icon-white"></i> View Complaints Submitted</a>
+	        	<a href="public-list-feedback-items.php" class="btn btn-success btn-block"><i class="icon-thumbs-up icon-white"></i> View Feedback Given</a>
+	        	<a href="public-list-complaints.php" class="btn btn-danger btn-block"><i class="icon-exclamation-sign icon-white"></i> View Complaints Submitted</a>
 	        </div>
         </div>
 

@@ -26,7 +26,7 @@ if ($session->is_logged_in()){
 
 			if ($complaint_to_read_update->update()){
 				$session->message("Success! The Complaint details have been changed. ");
-				redirect_to('public_list_complaints.php');
+				redirect_to('public-list-complaints.php');
 			} else {
 				$session->message("Error! The Complaint details could not be changed. ");
 			}
@@ -83,7 +83,7 @@ if ($session->is_logged_in()){
        	  <div class="span3">
 
 	       	  <div class="sidenav" data-spy="affix" data-offset-top="200">
-		      	<a href="public_list_complaints.php" class="btn btn-primary"><i class="icon-arrow-left icon-white"></i> Back to List of Complaints</a>
+		      	<a href="public-list-complaints.php" class="btn btn-primary"><i class="icon-arrow-left icon-white"></i> Back to List of Complaints</a>
 		      </div>
 
        	  </div>

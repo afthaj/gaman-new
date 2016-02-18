@@ -59,7 +59,7 @@ if ($session->is_logged_in()){
 
       	<div class="row-fluid">
 	        <br />
-	        <a href="public_create_complaint.php" class="btn btn-primary"><i class="icon-plus icon-white"></i> Add New Complaint</a>
+	        <a href="public-create-complaint.php" class="btn btn-primary"><i class="icon-plus icon-white"></i> Add New Complaint</a>
 	        <br/> <br />
         </div>
 
@@ -134,7 +134,7 @@ if ($session->is_logged_in()){
 
 			        ?>
 			        "><?php echo $complaint_status_object->find_by_id($complaint->status)->comp_status_name; ?></span></td>
-	        		<td><a href="public_read_update_complaint.php?complaintid=<?php echo $complaint->id; ?>" class="btn btn-warning btn-block"><i class="icon-edit icon-white"></a></td>
+	        		<td><a href="public-read-update-complaint.php?complaintid=<?php echo $complaint->id; ?>" class="btn btn-warning btn-block"><i class="icon-edit icon-white"></a></td>
         		</tr>
         	<?php }?>
 

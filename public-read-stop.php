@@ -31,7 +31,7 @@ if (!empty($_GET['stopid'])){
 
 } else {
 	$session->message("No Stop ID provided to view.");
-	redirect_to("public_list_stops.php");
+	redirect_to("public-list-stops.php");
 }
 
 ?>
@@ -66,11 +66,11 @@ if (!empty($_GET['stopid'])){
 
         <div class="span3">
 	        <div class="sidenav" data-spy="affix" data-offset-top="200">
-	        	<a href="public_list_stops.php" class="btn btn-primary btn-block"><i class="icon-arrow-left icon-white"></i> Back to List of Bus Stops</a>
+	        	<a href="public-list-stops.php" class="btn btn-primary btn-block"><i class="icon-arrow-left icon-white"></i> Back to List of Bus Stops</a>
 	        	<?php if (!empty($user->id)){ ?>
 	        	<br />
-	        	<a href="public_create_feedback.php" class="btn btn-success btn-block"><i class="icon-thumbs-up icon-white"></i> Give Feedback</a>
-	        	<a href="public_create_complaint.php" class="btn btn-danger btn-block"><i class="icon-exclamation-sign icon-white"></i> Create Complaint</a>
+	        	<a href="public-create-feedback.php" class="btn btn-success btn-block"><i class="icon-thumbs-up icon-white"></i> Give Feedback</a>
+	        	<a href="public-create-complaint.php" class="btn btn-danger btn-block"><i class="icon-exclamation-sign icon-white"></i> Create Complaint</a>
 	        	<br />
 	        	<div class="well">Feedback <span class="badge badge-success"><?php echo count($feedback_by_user); ?></span></div>
 	        	<div class="well">Complaints <span class="badge badge-important"><?php echo count($complaints_by_user); ?></span></div>
@@ -159,7 +159,7 @@ if (!empty($_GET['stopid'])){
 
 							?>
 
-			        		<li><a href="public_read_route.php?routeid=<?php echo $route->id; ?>" class="btn btn-info"><?php echo $route->route_number; ?></a> from <a href="<?php echo $_SERVER['PHP_SELF']; ?>?stopid=<?php echo $stop_object->find_by_id($route->begin_stop)->id; ?>" class="btn btn-info"><?php echo $stop_object->find_by_id($route->begin_stop)->name; ?></a> to <a href="<?php echo $_SERVER['PHP_SELF']; ?>?stopid=<?php echo $stop_object->find_by_id($route->end_stop)->id; ?>" class="btn btn-info"><?php echo $stop_object->find_by_id($route->end_stop)->name; ?></a></li>
+			        		<li><a href="public-read-route.php?routeid=<?php echo $route->id; ?>" class="btn btn-info"><?php echo $route->route_number; ?></a> from <a href="<?php echo $_SERVER['PHP_SELF']; ?>?stopid=<?php echo $stop_object->find_by_id($route->begin_stop)->id; ?>" class="btn btn-info"><?php echo $stop_object->find_by_id($route->begin_stop)->name; ?></a> to <a href="<?php echo $_SERVER['PHP_SELF']; ?>?stopid=<?php echo $stop_object->find_by_id($route->end_stop)->id; ?>" class="btn btn-info"><?php echo $stop_object->find_by_id($route->end_stop)->name; ?></a></li>
 			        		<li>&nbsp;</li>
 
 		        		<?php } ?>

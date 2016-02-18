@@ -1,19 +1,19 @@
 <?php
 require_once("./includes/initialize.php");
 
-//$bus_personnel = BusPersonnel::find_all();
-
 //pagination code
 $current_page = !empty($_GET['page']) ? (int)$_GET['page'] : 1;
 $per_page = 20;
-$total_count = $bus_personnel_object->count_all();
+$total_count = $route_object->count_all();
 $pagination = new Pagination($current_page, $per_page, $total_count);
 
-$sql  = "SELECT * FROM bus_personnel";
+//$routes = BusRoute::find_all();
+
+$sql  = "SELECT * FROM routes";
 $sql .= " LIMIT " . $per_page;
 $sql .= " OFFSET " . $pagination->offset();
 
-$bus_personnel = $bus_personnel_object->find_by_sql($sql);
+$routes = $route_object->find_by_sql($sql);
 
 //check login
 if ($session->is_logged_in()){
@@ -33,7 +33,7 @@ if ($session->is_logged_in()){
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Buses List &middot; <?php echo WEB_APP_NAME; ?></title>
+    <title>Routes List &middot; <?php echo WEB_APP_NAME; ?></title>
     <?php require_once('./includes/layouts/header.php');?>
   </head>
 
@@ -44,19 +44,19 @@ if ($session->is_logged_in()){
     <div id="wrap">
 
       <!-- Fixed navbar -->
-      <?php $page = 'admin_buses_list';?>
       <?php require_once('./includes/layouts/navbar.php');?>
+
+      <header class="jumbotron subhead">
+		 <div class="container-fluid">
+		   <h1>List of Bus Routes</h1>
+		 </div>
+	  </header>
 
       <!-- Begin page content -->
 
-      <header class="jumbotron subhead">
-        <div class="container-fluid">
-          <h1>List of Bus Personnel</h1>
-        </div>
-      </header>
+      <!-- Start Content -->
 
-        <!-- Start Content -->
-        <div class="container-fluid">
+      <div class="container-fluid">
 
         <div class="row-fluid">
 
@@ -65,39 +65,30 @@ if ($session->is_logged_in()){
         <section>
 
         <table class="table table-bordered table-hover">
+          <thead>
 	        <tr align="center">
-	        	<td>Profile Picture</td>
-		        <td>First Name</td>
-		        <td>Last Name</td>
-		        <td>Role</td>
-		        <td>Username</td>
-		        <td>NIC Number</td>
+		        <td>Route Number</td>
+		        <td>Begin Stop</td>
+		        <td>End Stop</td>
+		        <td>Length (km)</td>
+		        <td>Trip Time</td>
 		        <td>&nbsp;</td>
 	        </tr>
+	      </thead>
+	      <tbody>
 
-        	<?php foreach($bus_personnel as $bus_person){ ?>
+        	<?php foreach($routes as $route){ ?>
         		<tr align="center">
-        			<td>
-        			<?php
-
-	        		$bus_personnel_profile_picture = $photo_object->get_profile_picture(4, $bus_person->id);
-
-	        		if (!empty($bus_personnel_profile_picture->filename)) {
-	        			echo '<img src="../' . $bus_personnel_profile_picture->image_path() . '" width="100" class="img-rounded" />';
-	        		} else {
-	        			echo '<img src="img/default-prof-pic.jpg" width="100" class="img-rounded" alt="Please upload a profile picture" />';
-	        		}
-
-	        		?>
-        			</td>
-	        		<td><?php echo $bus_person->first_name; ?></td>
-	        		<td><?php echo $bus_person->last_name; ?></td>
-	        		<td><?php echo $bus_personnel_role_object->find_by_id($bus_person->role)->role_name; ?></td>
-	        		<td><?php echo $bus_person->username; ?></td>
-	        		<td><?php echo $bus_person->nic_number; ?></td>
-	        		<td><a href="public_read_bus_personnel.php?personnelid=<?php echo $bus_person->id; ?>" class="btn btn-warning btn-block"><i class="icon-info-sign icon-white"></i> View Details</a></td>
+	        		<td><?php echo $route->route_number; ?></td>
+	        		<td><?php echo $stop_object->find_by_id($route->begin_stop)->name; ?></td>
+	        		<td><?php echo $stop_object->find_by_id($route->end_stop)->name; ?></td>
+	        		<td><?php echo $route->length; ?></td>
+	        		<td><?php echo format_trip_time($route->trip_time); ?></td>
+	        		<td><a href="public-read-route.php?routeid=<?php echo $route->id; ?>" class="btn btn-warning btn-block"><i class="icon-info-sign icon-white"></i> Route Profile</a></td>
         		</tr>
         	<?php }?>
+
+          </tbody>
 
         </table>
 
@@ -138,9 +129,10 @@ if ($session->is_logged_in()){
 
 		<!-- End Pagination -->
 
-        </div>
-        <!-- End Content -->
+      </div>
+      <!-- End Content -->
 
+      <div class="clearfix">&nbsp;</div>
 
       <div id="push"></div>
     </div>

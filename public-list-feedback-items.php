@@ -59,7 +59,7 @@ if ($session->is_logged_in()){
 
       	<div class="row-fluid">
 	        <br />
-	        <a href="public_create_feedback.php" class="btn btn-primary"><i class="icon-plus icon-white"></i> Provide Feedback</a>
+	        <a href="public-create-feedback.php" class="btn btn-primary"><i class="icon-plus icon-white"></i> Provide Feedback</a>
 	        <br/> <br />
         </div>
 
@@ -117,7 +117,7 @@ if ($session->is_logged_in()){
 			        <td><?php echo date("d M Y", $feedback_item->date_time_submitted); ?></td>
 			        <td><?php echo date("h:i:s a", $feedback_item->date_time_submitted); ?></td>
 			        <td><?php echo $feedback_item->content; ?></td>
-	        		<td><a href="public_read_update_feedback_item.php?feedbackitemid=<?php echo $feedback_item->id; ?>" class="btn btn-warning btn-block"><i class="icon-edit icon-white"></i></a></td>
+	        		<td><a href="public-read-update-feedback-item.php?feedbackitemid=<?php echo $feedback_item->id; ?>" class="btn btn-warning btn-block"><i class="icon-edit icon-white"></i></a></td>
         		</tr>
         	<?php } ?>
 

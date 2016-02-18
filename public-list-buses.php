@@ -62,7 +62,7 @@ if ($session->is_logged_in()){
 	        		<td><?php echo $route_object->find_by_id($bus->route_id)->route_number; ?></td>
 	        		<td><?php echo $bus->reg_number; ?></td>
 	        		<td><?php if (!empty($bus->name)) {echo $bus->name;} ?></td>
-	        		<td><a href="public_read_bus.php?busid=<?php echo $bus->id; ?>" class="btn btn-warning btn-block"><i class="icon-info-sign icon-white"></i> View Details</a></td>
+	        		<td><a href="public-read-bus.php?busid=<?php echo $bus->id; ?>" class="btn btn-warning btn-block"><i class="icon-info-sign icon-white"></i> View Details</a></td>
         		</tr>
         	<?php }?>
 

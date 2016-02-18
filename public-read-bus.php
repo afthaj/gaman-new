@@ -30,7 +30,7 @@ if (!empty($_GET['busid'])){
 	}
 } else {
 	$session->message("No Bus ID provided to view.");
-	redirect_to("public_list_buses.php");
+	redirect_to("public-list-buses.php");
 }
 
 ?>
@@ -66,11 +66,11 @@ if (!empty($_GET['busid'])){
 
         <div class="span3">
 	        <div class="sidenav" data-spy="affix" data-offset-top="200">
-	        	<a href="public_list_buses.php" class="btn btn-primary btn-block"><i class="icon-arrow-left icon-white"></i> Back to List of Buses</a>
+	        	<a href="public-list-buses.php" class="btn btn-primary btn-block"><i class="icon-arrow-left icon-white"></i> Back to List of Buses</a>
 	        	<?php if (!empty($user->id)){ ?>
 	        	<br />
-	        	<a href="public_create_feedback.php" class="btn btn-success btn-block"><i class="icon-thumbs-up icon-white"></i> Give Feedback</a>
-	        	<a href="public_create_complaint.php" class="btn btn-danger btn-block"><i class="icon-exclamation-sign icon-white"></i> Create Complaint</a>
+	        	<a href="public-create-feedback.php" class="btn btn-success btn-block"><i class="icon-thumbs-up icon-white"></i> Give Feedback</a>
+	        	<a href="public-create-complaint.php" class="btn btn-danger btn-block"><i class="icon-exclamation-sign icon-white"></i> Create Complaint</a>
 	        	<br />
 	        	<div class="well">Feedback <span class="badge badge-success"><?php echo count($feedback_by_user); ?></span></div>
 	        	<div class="well">Complaints <span class="badge badge-important"><?php echo count($complaints_by_user); ?></span></div>
@@ -177,14 +177,14 @@ if (!empty($_GET['busid'])){
 		        		$bus_personnel_profile_picture = $photo_object->get_profile_picture(4, $assigned_bus_personnel->id);
 
 		        		if (!empty($bus_personnel_profile_picture->filename)) {
-		        			echo '<a href="public_read_bus_personnel.php?personnelid=' . $assigned_bus_personnel->id . '"><img src="../' . $bus_personnel_profile_picture->image_path() . '" width="100" class="img-rounded" /></a>';
+		        			echo '<a href="public-read-bus-personnel.php?personnelid=' . $assigned_bus_personnel->id . '"><img src="../' . $bus_personnel_profile_picture->image_path() . '" width="100" class="img-rounded" /></a>';
 		        		} else {
 		        			echo '<img src="img/default-prof-pic.jpg" width="100" class="img-rounded" alt="Please upload a profile picture" />';
 		        		}
 
 		        		?>
 	        			</td>
-	        			<td><a href="public_read_bus_personnel.php?personnelid=<?php echo $assigned_bus_personnel->id; ?>" class="btn btn-info btn-block"><?php echo $assigned_bus_personnel->full_name(); ?></a></td>
+	        			<td><a href="public-read-bus-personnel.php?personnelid=<?php echo $assigned_bus_personnel->id; ?>" class="btn btn-info btn-block"><?php echo $assigned_bus_personnel->full_name(); ?></a></td>
 		        		<td>
 		        		<?php
 
