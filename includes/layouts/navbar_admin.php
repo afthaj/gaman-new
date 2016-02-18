@@ -1,7 +1,7 @@
 <div class="navbar navbar-fixed-top navbar-invers">
   <div class="navbar-inner">
     <div class="container-fluid">
-      
+
       <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-responsive-collapse">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -9,11 +9,11 @@
       </a>
 
       <a class="brand" href="index.php"><?php echo WEB_APP_NAME;?></a>
-      
+
       <div class="nav-collapse collapse navbar-responsive-collapse">
         <ul class="nav navbar-nav">
           <li<?php if (!empty($page) && $page == 'index'){echo ' class="active"';}?>><a href="index.php"><i class="icon-home icon-white"></i></a></li>
-          
+
           <li class="dropdown">
           	<a href="#" class="dropdown-toggle" data-toggle="dropdown">Bus Routes &amp; Stops <b class="caret"></b></a>
           	<ul class="dropdown-menu">
@@ -30,7 +30,7 @@
           		<!-- <li><a href="#"><i class="icon-search icon-white"></i> Search for Bus Stop</a></li> -->
           	</ul>
           </li>
-          
+
           <li class="dropdown">
           	<a href="#" class="dropdown-toggle" data-toggle="dropdown">Buses &amp; Personnel <b class="caret"></b></a>
           	<ul class="dropdown-menu">
@@ -47,7 +47,7 @@
           		<!-- <li><a href="#"><i class="icon-search icon-white"></i> Search for Personnel</a></li> -->
           	</ul>
           </li>
-          
+
           <li class="dropdown">
           	<a href="#" class="dropdown-toggle" data-toggle="dropdown">Feedback <b class="caret"></b></a>
           	<ul class="dropdown-menu">
@@ -60,7 +60,7 @@
           		<!-- <li><a href="#"><i class="icon-search icon-white"></i> Search for Feedback Item</a></li> -->
           	</ul>
           </li>
-          
+
           <?php if (!empty($session->id) && $session->object_type == 4) { // object_type 4 is bus_personnel ?>
           <li class="dropdown">
           	<a href="#" class="dropdown-toggle" data-toggle="dropdown">My Buses and Personnel <b class="caret"></b></a>
@@ -70,14 +70,12 @@
           	</ul>
           </li>
           <?php } ?>
-          
-          <li<?php if (!empty($page) && $page == 'survey_info'){echo ' class="active"';}?>><a href="survey_info.php">Survey Info</a></li>
 
         </ul>
         <ul class="nav navbar-nav pull-right">
-          
+
           <li><a href="<?php echo '..'.DS; ?>">Public Area</a></li>
-          
+
           <?php if (!empty($session->id) && ($session->object_type == 5 || $session->object_type == 4) ) { // object_type 5 is admin and 4 is bus_personnel ?>
           	<li class="dropdown">
           	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -97,10 +95,10 @@
           <?php } else { ?>
           	<li><a href="login.php">Login</a></li>
           <?php } ?>
-          
+
         </ul>
       </div><!--/.nav-collapse -->
-      
+
     </div>
   </div>
 </div>

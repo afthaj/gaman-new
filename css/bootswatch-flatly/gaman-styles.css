@@ -16,3 +16,7 @@ ol.bus-stops-list {
   margin-right: auto !important;
   float: none !important;
 }
+
+.main-search {
+	width: 20px;
+}

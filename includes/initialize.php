@@ -5,20 +5,20 @@ defined('DS') ? null : define('DS', DIRECTORY_SEPARATOR);
 
 if (PHP_OS == 'WINNT' || PHP_OS == 'WIN32' || PHP_OS == 'Windows'){
 	//windows
-	
+
 	defined('SITE_ROOT') ? null : define('SITE_ROOT', 'D:'.DS.'Aftha'.DS.'XAMPP'.DS.'htdocs'.DS.'gaman-new');
 	require_once("config_windows.php");
-	
+
 } else if (PHP_OS == 'Linux') {
 	//server
 	require_once("config_server.php");
-	
+
 } else if (PHP_OS == 'Darwin') {
 	//OS X
-	
+
 	defined('SITE_ROOT') ? null : define('SITE_ROOT', DS.'Users'.DS.'aftha'.DS.'Sites'.DS.'2. Eclipse Workspace'.DS.'Gaman'.DS.'public');
 	require_once("config_mac.php");
-	
+
 }
 
 require_once("functions.php");
