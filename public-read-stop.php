@@ -299,7 +299,5 @@ if (!empty($_GET['stopid'])){
 
     <?php require_once('./includes/layouts/footer.php');?>
 
-    <?php require_once('./includes/layouts/scripts.php');?>
-
   </body>
 </html>

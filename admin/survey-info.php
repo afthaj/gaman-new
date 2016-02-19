@@ -1,36 +1,23 @@
 <?php
 require_once("../includes/initialize.php");
-
-//check login
-if ($session->is_logged_in()){
-
-	if ($session->object_type == 6) {
-		//commuter
-
-		$user = $commuter_object->find_by_id($_SESSION['id']);
-		$profile_picture = $photo_object->get_profile_picture($session->object_type, $user->id);
-	}
-
-}
-
+require_once("../includes/page-scripts/admin-survey-info.php");
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <title>Survey Info &middot; <?php echo WEB_APP_NAME; ?></title>
-    <?php require_once('../includes/layouts/header.php');?>
+    <?php require_once('../includes/layouts/header-admin.php');?>
   </head>
 
   <body>
-
 
     <!-- Part 1: Wrap all page content here -->
     <div id="wrap">
 
       <!-- Fixed navbar -->
       <?php $page = 'survey_info';?>
-      <?php require_once('../includes/layouts/navbar.php');?>
+      <?php require_once('../includes/layouts/navbar-admin.php');?>
 
       <!-- Begin page content -->
 
@@ -47,7 +34,7 @@ if ($session->is_logged_in()){
        	  <div class="row-fluid">
        	  <div class="span3">
        	  	<div class="sidenav" data-spy="affix" data-offset-top="200">
-	        	<a href="#" class="btn btn-primary btn-block"><i class="icon-arrow-left icon-white"></i> Back to Home Page</a>
+	        	<a href="./" class="btn btn-primary btn-block"><i class="icon-arrow-left icon-white"></i> Back to Home Page</a>
 	        </div>
        	  </div>
 
@@ -112,9 +99,7 @@ if ($session->is_logged_in()){
       <div id="push"></div>
     </div>
 
-    <?php require_once('../includes/layouts/footer.php');?>
-
-    <?php require_once('../includes/layouts/scripts.php');?>
+    <?php require_once('../includes/layouts/footer-admin.php');?>
 
   </body>
 </html>

@@ -79,7 +79,7 @@
           <?php if (!empty($session->id) && ($session->object_type == 5 || $session->object_type == 4) ) { // object_type 5 is admin and 4 is bus_personnel ?>
           	<li class="dropdown">
           	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-          	<i class="icon-user icon-white"></i> <?php if (!empty($user->id)) { echo $user->full_name(); } ?> <b class="caret"></b>
+          	     <i class="icon-user icon-white"></i> <?php if (!empty($user->id)) { echo $user->full_name(); } ?> <b class="caret"></b>
           	</a>
           	<ul class="dropdown-menu">
           		<li><a href="admin-view-profile.php"><i class="icon-wrench icon-white"></i> View Profile</a></li>

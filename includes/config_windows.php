@@ -8,4 +8,7 @@ defined('DB_NAME') ? null : define("DB_NAME", "gaman");
 defined('WEB_APP_NAME') ? null : define("WEB_APP_NAME", "Gaman");
 defined('WEB_APP_CATCH_PHRASE') ? null : define("WEB_APP_CATCH_PHRASE", "Helping you travel!");
 
+defined('LAYOUTS-FOLDER') ? null : define("LAYOUTS-FOLDER", "includes/layouts");
+defined('PAGE-SCRIPTS-FOLDER') ? null : define("PAGE-SCRIPTS-FOLDER", "includes/page-scripts");
+
 ?>

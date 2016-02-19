@@ -1,10 +1,6 @@
 <?php
 
-require_once('../includes/initialize.php');
-
-$stop_object = new BusStop();
-$stop_route_object = new StopRoute();
-$route_object = new BusRoute();
+require_once('../../includes/initialize.php');
 
 $flag = 0;
 $intersection_stop = 0;

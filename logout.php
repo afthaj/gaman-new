@@ -1,5 +1,8 @@
-<?php require_once("./includes/initialize.php"); ?>
 <?php
-    $session->logout();
-    redirect_to("./");
+
+require_once("./includes/initialize.php");
+
+$session->logout();
+redirect_to("./");
+
 ?>

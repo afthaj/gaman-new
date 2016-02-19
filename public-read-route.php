@@ -267,7 +267,5 @@ if (isset($_GET['routeid'])) {
 
     <?php require_once('./includes/layouts/footer.php');?>
 
-    <?php require_once('./includes/layouts/scripts.php');?>
-
   </body>
 </html>

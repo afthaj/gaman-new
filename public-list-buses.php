@@ -83,7 +83,5 @@ if ($session->is_logged_in()){
 
     <?php require_once('./includes/layouts/footer.php');?>
 
-    <?php require_once('./includes/layouts/scripts.php');?>
-
   </body>
 </html>

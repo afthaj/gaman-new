@@ -38,8 +38,6 @@ if (isset($_POST['submit'])){
     <title>Login &middot; <?php echo WEB_APP_NAME; ?></title>
     <?php require_once('./includes/layouts/header.php');?>
 
-    <link href="css/login-styles.css" rel="stylesheet" />
-
   </head>
 
   <body>
@@ -47,6 +45,12 @@ if (isset($_POST['submit'])){
     <div class="container">
 
       <form class="form-signin" action="login.php" method="post">
+
+        <div class="control-group">
+        	<div class="controls">
+              <a href="./" class="btn btn-warning"><i class="icon-chevron-left icon-white"></i> Back</a>
+          </div>
+        </div>
 
         <div class="control-group">
         	<h2 class="form-signin-heading">Please sign in</h2>
@@ -79,14 +83,12 @@ if (isset($_POST['submit'])){
         </div>
 
         <div class="form-actions">
-        	<button class="btn btn-large btn-primary" type="submit" name="submit">Sign in</button>
+        	<button class="btn btn-block btn-primary" type="submit" name="submit">Sign in</button>
         </div>
 
       </form>
 
     </div> <!-- /container -->
-
-    <?php require_once('./includes/layouts/scripts.php');?>
 
   </body>
 </html>

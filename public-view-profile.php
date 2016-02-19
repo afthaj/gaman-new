@@ -263,9 +263,7 @@ if ($session->is_logged_in()){
       <div id="push"></div>
     </div>
 
-    <?php require_once('./includes/layouts/footer_admin.php');?>
-
-    <?php require_once('./includes/layouts/scripts_admin.php');?>
+    <?php require_once('./includes/layouts/footer.php');?>
 
   </body>
 </html>

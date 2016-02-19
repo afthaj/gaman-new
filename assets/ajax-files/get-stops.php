@@ -1,6 +1,6 @@
-<?php 
+<?php
 
-require_once('../includes/initialize.php');
+require_once('../../includes/initialize.php');
 
 $stop_object = new BusStop();
 
@@ -14,7 +14,7 @@ for ($i = 0; $i < count($stops); $i++){
 	} else {
 		$stop_in_json .= json_encode($stops[$i]->name);
 	}
-		
+
 	if ($i == count($stops)-1){
 		$stop_in_json .= ']';
 	} else {

@@ -1,64 +1,13 @@
 <?php
 require_once("../includes/initialize.php");
-
-//init code
-$object_type_admin = $object_type_object->get_object_type_by_name("admin");
-$object_type_bus_personnel = $object_type_object->get_object_type_by_name("bus_personnel");
-
-//check login
-if ($session->is_logged_in()){
-	redirect_to("index.php");
-}
-
-if (isset($_POST['submit'])){
-
-	$object_type = trim($_POST['object_type']);
-
-	if ($object_type == 5 /*$object_type_admin->id*/) {
-
-		$username = trim($_POST['username']);
-		$password = trim($_POST['password']);
-
-		$found_user_admin = $admin_user_object->authenticate($username, $password);
-
-		if ($found_user_admin){
-			$session->login($found_user_admin, $object_type_admin->id);
-			redirect_to("index.php");
-		} else {
-			$session->message("username/password combination is incorrect. ");
-		}
-
-	} else if ($object_type == 4 /*$object_type_bus_personnel->id*/) {
-
-		$username = trim($_POST['username']);
-		$password = trim($_POST['password']);
-
-		$found_user_bus_personnel = $bus_personnel_object->authenticate($username, $password);
-
-		if ($found_user_bus_personnel){
-			$session->login($found_user_bus_personnel, $object_type_bus_personnel->id);
-			redirect_to("index.php");
-		} else {
-			$session->message("username/password combination is incorrect. ");
-		}
-
-	}
-
-} else {
-	$username = "";
-	$password = "";
-}
-
-
+require_once("../includes/page-scripts/admin-login.php");
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <title>Login &middot; Gaman</title>
-    <?php require_once('../includes/layouts/header_admin.php');?>
-
-    <link href="../css/login-styles.css" rel="stylesheet" />
+    <?php require_once('../includes/layouts/header-admin.php');?>
 
   </head>
 
@@ -67,6 +16,12 @@ if (isset($_POST['submit'])){
     <div class="container">
 
       <form class="form-signin" action="login.php" method="post">
+
+        <div class="control-group">
+        	<div class="controls">
+                <a href="./" class="btn btn-warning"><i class="icon-chevron-left icon-white"></i> Back</a>
+            </div>
+        </div>
 
         <div class="control-group">
         	<h2 class="form-signin-heading">Please sign in</h2>
@@ -85,8 +40,6 @@ if (isset($_POST['submit'])){
         }
 
         ?>
-
-
 
         <div class="control-group">
         	<div class="controls">
@@ -111,14 +64,12 @@ if (isset($_POST['submit'])){
         </div>
 
         <div class="form-actions">
-        	<button class="btn btn-large btn-primary" type="submit" name="submit">Sign in</button>
+        	<button class="btn btn-block btn-primary" type="submit" name="submit">Sign in</button>
         </div>
 
       </form>
 
     </div> <!-- /container -->
-
-    <?php require_once('../includes/layouts/scripts_admin.php');?>
 
   </body>
 </html>

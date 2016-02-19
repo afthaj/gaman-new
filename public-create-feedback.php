@@ -85,39 +85,6 @@ if ($session->is_logged_in()){
     <title>Feedback &middot; <?php echo WEB_APP_NAME; ?></title>
     <?php require_once('./includes/layouts/header.php');?>
 
-    <script type="text/javascript">
-
-	function change_related_object_id(str, related_object_id) {
-
-		if (str == "") {
-			related_object_id.innerHTML = "";
-			return;
-			}
-
-		if (window.XMLHttpRequest) {
-			// code for IE7+, Firefox, Chrome, Opera, Safari
-			request = new XMLHttpRequest();
-			} else {
-				// code for IE6, IE5
-				request = new ActiveXObject("Microsoft.XMLHTTP");
-				}
-
-		request.onreadystatechange = function() {
-
-			if (request.readyState == 4 && request.status == 200) {
-				related_object_id.innerHTML = request.responseText;
-				}
-
-			}
-
-		request.open("GET","ajax-files/get-objects-to-create-feedback.php?q=" + str, true);
-
-		request.send();
-
-		}
-
-	</script>
-
   </head>
 
   <body>
@@ -217,8 +184,6 @@ if ($session->is_logged_in()){
     </div>
 
     <?php require_once('./includes/layouts/footer.php');?>
-
-    <?php require_once('./includes/layouts/scripts.php');?>
 
   </body>
 </html>

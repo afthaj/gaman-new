@@ -321,8 +321,6 @@ if (!empty($_GET['busid'])){
       <div id="push"></div>
     </div>
 
-    <?php require_once('./includes/layouts/scripts.php');?>
-
     <?php require_once('./includes/layouts/footer.php');?>
 
   </body>
