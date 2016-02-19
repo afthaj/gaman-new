@@ -1,40 +1,34 @@
 <?php
 require_once("../includes/initialize.php");
 
-//init code
-$photo_object = new Photograph();
-$admin_user_object = new AdminUser();
-$route_object = new BusRoute();
-$survey_object = new Survey();
-
 //check login
 if ($session->is_logged_in()){
-	
+
 	if ($session->object_type == 5){
 		//admin user
-	
+
 		$user = $admin_user_object->find_by_id($_SESSION['id']);
 		$profile_picture = $photo_object->get_profile_picture($session->object_type, $user->id);
-	
+
 	} else {
 		$session->message("Error! You must login to view the requested page. ");
 		redirect_to("login.php");
 	}
-	
+
 	//GET request stuff
 	if (!empty($_GET['routeid'])){
-		
+
 		$route = $route_object->find_by_id($_GET['routeid']);
 		$surveys = $survey_object->get_surveys_for_route($route->id);
-		
+
 	} else {
-		
+
 		$surveys = $survey_object->find_all();
-		
+
 		//$session->message("No Route ID provided to view.");
 		//redirect_to("admin_list_routes.php");
 	}
-	
+
 } else {
 	$session->message("Error! You must login to view the requested page. ");
 	redirect_to("login.php");
@@ -66,30 +60,30 @@ if ($session->is_logged_in()){
         	<?php } ?>
         </div>
       </header>
-      
+
       <!-- Begin page content -->
       <div class="container-fluid">
       <div class="row-fluid">
         <!-- Start Content -->
-        
+
         <div class="span3">
         	<div class="sidenav" data-spy="affix" data-offset-top="200">
         	<?php if (!empty($_GET['routeid'])) { ?>
-        		<a href="admin_list_routes.php" class="btn btn-primary btn-block"><i class="icon-arrow-left icon-white"></i> Back to List of Routes</a>
+        		<a href="admin-list-routes.php" class="btn btn-primary btn-block"><i class="icon-arrow-left icon-white"></i> Back to List of Routes</a>
         	<?php } else { ?>
         		<a href="index.php" class="btn btn-primary btn-block"><i class="icon-arrow-left icon-white"></i> Back to Home Page</a>
         	<?php } ?>
         	</div>
         </div>
-        
+
         <div class="span9">
-        
+
         <section>
-        
-        <?php 
-        
+
+        <?php
+
         if(!empty($session->message)){
-        	
+
         	echo '<div class="alert">';
         	echo '<button type="button" class="close" data-dismiss="alert">&times;</button>';
         	//echo '<p>';
@@ -97,45 +91,45 @@ if ($session->is_logged_in()){
         	//echo '</p>';
         	echo '</div>';
         }
-        
+
         ?>
-        
+
         <?php if ($surveys) { ?>
-        
+
         <table class="table table-bordered table-hover">
-      
+
 	      <tr>
 		   <td align="center">Survey Start Date</td>
 		   <td align="center">Survey End Date</td>
 		   <td>&nbsp;</td>
 	      </tr>
-	      
+
 	      <?php foreach($surveys as $survey) { ?>
 	      <tr>
 		   <td align="center"><?php echo strftime("%B %d, %Y", $survey->start_date); ?></td>
 		   <td align="center"><?php echo strftime("%B %d, %Y", $survey->end_date); ?></td>
-		   <td><a href="admin_list_trips.php?surveyid=<?php echo $survey->id; ?>" class="btn btn-warning btn-block"><i class="icon-info-sign icon-white"></i> Details</a></td>
+		   <td><a href="admin-list-trips.php?surveyid=<?php echo $survey->id; ?>" class="btn btn-warning btn-block"><i class="icon-info-sign icon-white"></i> Details</a></td>
 	      </tr>
 	      <?php } ?>
-	      
+
 	    </table>
-	    
+
 	    <?php } else { ?>
 	      <div class="alert">
 	      No Surveys recorded
 	      <button type="button" class="close" data-dismiss="alert">&times;</button>
 	      </div>
       	<?php } ?>
-        
+
         </section>
-        	
+
         </div>
 
         <!-- End Content -->
       </div>
       </div>
-      <!-- End page content --> 
-      
+      <!-- End page content -->
+
       <div id="push"></div>
     </div>
 

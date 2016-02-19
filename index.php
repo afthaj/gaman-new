@@ -28,7 +28,7 @@ $commuters = $commuter_object->find_all();
     $(document).ready(function() {
 	  $('.typeahead').typeahead({
 	    name: 'name',
-	    prefetch: './ajax_files/get_stops.php',
+	    prefetch: './ajax-files/get-stops.php',
 	    limit: 5
 	  });
 	});
@@ -38,7 +38,7 @@ $commuters = $commuter_object->find_all();
 		var from_encoded = encodeURI(from.value);
 		var to_encoded = encodeURI(to.value);
 
-		var search_url = "./ajax_files/search_for_stops.php?f=";
+		var search_url = "./ajax-files/search-for-stops.php?f=";
 			search_url += from_encoded;
 			search_url += "&t=";
 			search_url += to_encoded;

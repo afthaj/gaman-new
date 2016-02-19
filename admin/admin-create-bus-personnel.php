@@ -2,49 +2,44 @@
 require_once("../includes/initialize.php");
 
 //init code
-$photo_object = new Photograph();
-$admin_user_object = new AdminUser();
-$bus_personnel_object = new BusPersonnel();
-$route_object = new BusRoute();
-
 $roles = BusPersonnelRole::find_all();
 $buses = Bus::find_all();
 
 //check login
 if ($session->is_logged_in()){
-	
+
 	if ($session->object_type == 5){
 		//admin user
-	
+
 		$user = $admin_user_object->find_by_id($_SESSION['id']);
 		$profile_picture = $photo_object->get_profile_picture($session->object_type, $user->id);
-	
+
 		if (isset($_POST['submit'])) {
-	
+
 			$bus_personnel_to_create = new BusPersonnel();
 			//$buses_bus_personnel_to_create = new BusBusPersonnel();
-	
+
 			$bus_personnel_to_create->role = $_POST['role'];
 			$bus_personnel_to_create->username = $_POST['username'];
 			$bus_personnel_to_create->password = $_POST['password'];
 			$bus_personnel_to_create->first_name = $_POST['first_name'];
 			$bus_personnel_to_create->last_name = $_POST['last_name'];
 			$bus_personnel_to_create->nic_number = $_POST['nic_number'];
-	
+
 			//$buses_bus_personnel_to_create->bus_id = $_POST['bus_id'];
-	
+
 			if ($bus_personnel_to_create->create()){
-	
+
 				$session->message("Success! The new Bus Personnel has been added. ");
-				redirect_to('admin_list_bus_personnel.php');
-	
+				redirect_to('admin-list-bus-personnel.php');
+
 				/*
 				 $all_bus_personnel = BusPersonnel::find_all();
-	
+
 				for ($i = 0; $i = count($all_bus_personnel)-1; $i++){
 				$all_bus_personnel[$i]->id = $buses_bus_personnel_to_create->bus_personnel_id;
 				}
-	
+
 				if ($buses_bus_personnel_to_create->create()){
 				$session->message("Success! The new Bus Personnel has been added. ");
 				redirect_to('admin_list_personnel.php');
@@ -52,17 +47,17 @@ if ($session->is_logged_in()){
 				$session->message("Error! The new Bus Personnel could not be added to the given Bus Route. ");
 				}
 				*/
-	
+
 			} else {
 				$session->message("Error! The new Bus Personnel could not be created. ");
 			}
 		}
-	
+
 	} else {
 		$session->message("Error! You do not have sufficient priviledges to view the requested page. ");
 		redirect_to("index.php");
 	}
-	
+
 } else {
 	$session->message("Error! You must login to view the requested page. ");
 	redirect_to("login.php");
@@ -87,33 +82,33 @@ if ($session->is_logged_in()){
       <?php require_once('../includes/layouts/navbar_admin.php');?>
 
       <!-- Begin page content -->
-      
+
       <header class="jumbotron subhead">
         <div class="container-fluid">
           <h1>Add New Bus Personnel</h1>
         </div>
       </header>
-      
+
       <div class="container-fluid">
-      
+
       <div class="row-fluid">
-      
+
         <!-- Start Content -->
-        
+
         <div class="span3">
         	<div class="sidenav" data-spy="affix" data-offset-top="200">
-        		<a href="admin_list_bus_personnel.php" class="btn btn-primary btn-block"><i class="icon-arrow-left icon-white"></i> Back to Personnel List</a>
+        		<a href="admin-list-bus-personnel.php" class="btn btn-primary btn-block"><i class="icon-arrow-left icon-white"></i> Back to Personnel List</a>
         	</div>
         </div>
 
         <div class="span9">
-        
+
         <section>
-        
+
         <?php echo $session->message; ?>
-        
+
         <form class="form-horizontal" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-            
+
             <div class="control-group">
             <label for="role" class="control-label">Role of Person</label>
 	            <div class="controls">
@@ -124,43 +119,43 @@ if ($session->is_logged_in()){
 					</select>
 	            </div>
             </div>
-            
+
             <div class="control-group">
         	<label for="username" class="control-label">Username</label>
 	        	<div class="controls">
 	        		<input type="text" name="username" />
 	        	</div>
         	</div>
-        	
+
         	<div class="control-group">
         	<label for="password" class="control-label">Password</label>
 	        	<div class="controls">
 	        		<input type="password" name="password" />
 	        	</div>
         	</div>
-            
+
             <div class="control-group">
         	<label for="first_name" class="control-label">First Name</label>
 	        	<div class="controls">
 	        		<input type="text" name="first_name" />
 	        	</div>
         	</div>
-            
+
             <div class="control-group">
             <label for="last_name" class="control-label">Last Name</label>
 	            <div class="controls">
 	            	<input type="text" value="" name="last_name" />
 	            </div>
             </div>
-            
+
             <div class="control-group">
             <label for="nic_number" class="control-label">NIC Number</label>
 	            <div class="controls">
 	            	<input type="text" value="" name="nic_number" />
 	            </div>
             </div>
-            
-            <!-- 
+
+            <!--
             <div class="control-group">
             <label for="bus_id" class="control-label">Assigned Bus</label>
 	            <div class="controls">
@@ -172,20 +167,20 @@ if ($session->is_logged_in()){
 	            </div>
             </div>
             -->
-            
+
           	<div class="form-actions">
         	    <button class="btn btn-primary" name="submit">Submit</button>
         	</div>
         </form>
-        
+
         </section>
-        
+
 	  	</div>
 
         <!-- End Content -->
-        
+
         </div>
-        
+
         </div>
 
       <div id="push"></div>

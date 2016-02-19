@@ -125,11 +125,11 @@ if ($session->is_logged_in()){
 
 			}
 
-		request.open("GET","ajax_files/get_objects_to_create_complaint.php?q=" + str, true);
+		request.open("GET","ajax-files/get-objects-to-create-complaint.php?q=" + str, true);
 
 		request.send();
 
-		request2.open("GET","ajax_files/get_object_types_to_create_complaint.php?q=" + str, true);
+		request2.open("GET","ajax-files/get-object-types-to-create-complaint.php?q=" + str, true);
 
 		request2.send();
 

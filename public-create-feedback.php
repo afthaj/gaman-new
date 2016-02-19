@@ -110,7 +110,7 @@ if ($session->is_logged_in()){
 
 			}
 
-		request.open("GET","ajax_files/get_objects_to_create_feedback.php?q=" + str, true);
+		request.open("GET","ajax-files/get-objects-to-create-feedback.php?q=" + str, true);
 
 		request.send();
 
