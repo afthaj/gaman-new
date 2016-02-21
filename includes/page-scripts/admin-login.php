@@ -6,7 +6,7 @@ $object_type_bus_personnel = $object_type_object->get_object_type_by_name("bus_p
 
 //check login
 if ($session->is_logged_in()){
-	redirect_to("index.php");
+	redirect_to("./");
 }
 
 if (isset($_POST['submit'])){
@@ -22,7 +22,7 @@ if (isset($_POST['submit'])){
 
 		if ($found_user_admin){
 			$session->login($found_user_admin, $object_type_admin->id);
-			redirect_to("index.php");
+			redirect_to("./");
 		} else {
 			$session->message("username/password combination is incorrect. ");
 		}
@@ -36,7 +36,7 @@ if (isset($_POST['submit'])){
 
 		if ($found_user_bus_personnel){
 			$session->login($found_user_bus_personnel, $object_type_bus_personnel->id);
-			redirect_to("index.php");
+			redirect_to("./");
 		} else {
 			$session->message("username/password combination is incorrect. ");
 		}

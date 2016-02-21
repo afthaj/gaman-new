@@ -7,7 +7,7 @@ require_once("../includes/page-scripts/admin-create-admin-user.php");
 <html lang="en">
   <head>
     <title>Add Admin User &middot; <?php echo WEB_APP_NAME; ?></title>
-    <?php require_once('../includes/layouts/header_admin.php');?>
+    <?php require_once('../includes/layouts/header-admin.php');?>
   </head>
 
   <body>
@@ -17,7 +17,7 @@ require_once("../includes/page-scripts/admin-create-admin-user.php");
     <div id="wrap">
 
       <!-- Fixed navbar -->
-      <?php require_once('../includes/layouts/navbar_admin.php');?>
+      <?php require_once('../includes/layouts/navbar-admin.php');?>
 
       <header class="jumbotron subhead">
 	      <div class="container-fluid">
@@ -112,7 +112,7 @@ require_once("../includes/page-scripts/admin-create-admin-user.php");
       <div id="push"></div>
     </div>
 
-    <?php require_once('../includes/layouts/footer_admin.php');?>
+    <?php require_once('../includes/layouts/footer-admin.php');?>
 
   </body>
 </html>

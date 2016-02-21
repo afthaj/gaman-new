@@ -1,14 +1,17 @@
 <?php
 
-require_once('../includes/initialize.php');
+require_once('../../includes/initialize.php');
+
+//init code
+$object_type = new ObjectType();
+$complaint_type = new ComplaintType();
+$bp_role = new BusPersonnelRole();
 
 $routes = BusRoute::find_all();
 $stops = BusStop::find_all();
 $buses = Bus::find_all();
 $bus_personnel = BusPersonnel::find_all();
-$object_type = new ObjectType();
-$complaint_type = new ComplaintType();
-$bp_role = new BusPersonnelRole();
+
 
 $q = $_GET['q'];
 

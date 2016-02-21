@@ -14,7 +14,7 @@ if ($session->is_logged_in()){
 		$profile_picture = $photo_object->get_profile_picture($session->object_type, $user->id);
 	} else {
 		$session->message("Error! You do not have sufficient priviledges to view the requested page. ");
-		redirect_to("index.php");
+		redirect_to("./");
 	}
 
 } else {

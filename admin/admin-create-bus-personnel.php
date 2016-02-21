@@ -7,7 +7,7 @@ require_once("../includes/page-scripts/admin-create-bus-personnel.php");
 <html lang="en">
   <head>
     <title>Add New Bus Personnel &middot; <?php echo WEB_APP_NAME; ?></title>
-    <?php require_once('../includes/layouts/header_admin.php');?>
+    <?php require_once('../includes/layouts/header-admin.php');?>
   </head>
 
   <body>
@@ -17,7 +17,7 @@ require_once("../includes/page-scripts/admin-create-bus-personnel.php");
     <div id="wrap">
 
       <!-- Fixed navbar -->
-      <?php require_once('../includes/layouts/navbar_admin.php');?>
+      <?php require_once('../includes/layouts/navbar-admin.php');?>
 
       <!-- Begin page content -->
 
@@ -124,7 +124,7 @@ require_once("../includes/page-scripts/admin-create-bus-personnel.php");
       <div id="push"></div>
     </div>
 
-    <?php require_once('../includes/layouts/footer_admin.php');?>
+    <?php require_once('../includes/layouts/footer-admin.php');?>
 
   </body>
 </html>

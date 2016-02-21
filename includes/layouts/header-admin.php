@@ -28,13 +28,14 @@
 <link rel="shortcut icon" href="../assets/ico/favicon.ico">
 
 <!-- JS -->
-<script src="../assets/js/jquery.js"></script>
-<script src="../assets/js/bootstrap.js"></script>
-<script src="../assets/js/typeahead.js"></script>
-<script src="../assets/js/application.js"></script>
-<script src="../assets/js/holder.js"></script>
-<script src="../assets/js/html5shiv.js"></script>
-<script src="../assets/js/prettify.js"></script>
-<script src="../assets/ajax-scripts.js"></script>
-<script defer src="../assets/js/jquery.flexslider.js"></script>
-<script defer src="../assets/js/responsiveslides.js"></script>
+<script type="text/javascript" src="../assets/js/jquery.js"></script>
+<script type="text/javascript" src="../assets/js/bootstrap.js"></script>
+<script type="text/javascript" src="../assets/js/typeahead.js"></script>
+<script type="text/javascript" src="../assets/js/application.js"></script>
+<script type="text/javascript" src="../assets/js/holder.js"></script>
+<script type="text/javascript" src="../assets/js/html5shiv.js"></script>
+<script type="text/javascript" src="../assets/js/prettify.js"></script>
+<script type="text/javascript" src="../assets/ajax-files/ajax-scripts.js"></script>
+<script type="text/javascript" src="../assets/js/jquery.flexslider.js"></script>
+<script type="text/javascript" src="../assets/js/responsiveslides.js"></script>
+<script type="text/javascript" src="../assets/js/loader.js"></script>

@@ -10,7 +10,7 @@ if (!$session->is_logged_in()){
 
 if (empty($_GET['adminid'])){
 	$session->message("Error. No user ID was provided. ");
-	redirect_to("index.php");
+	redirect_to("./");
 }
 
 $user_to_delete = AdminUser::find_by_id($_GET['adminid']);

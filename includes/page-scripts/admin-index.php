@@ -33,7 +33,7 @@ if ($session->is_logged_in()){
 		//everybody else
 
 		$session->message("Error! You do not have sufficient priviledges to view the requested page. ");
-		redirect_to("index.php");
+		redirect_to("./");
 	}
 
 } else {

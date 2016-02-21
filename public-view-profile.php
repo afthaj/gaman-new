@@ -1,79 +1,6 @@
 <?php
 require_once("./includes/initialize.php");
-
-//check login
-if ($session->is_logged_in()){
-
-	if ($session->object_type == 6){
-		//commuter
-
-		$user = $commuter_object->find_by_id($_SESSION['id']);
-		$profile_picture = $photo_object->get_profile_picture($session->object_type, $user->id);
-
-		if (isset($_POST['submit'])){
-			$user->username = $_POST['username'];
-			$user->first_name = $_POST['first_name'];
-			$user->last_name = $_POST['last_name'];
-			$user->email_address = $_POST['email_address'];
-
-			if ($user->update()){
-				$session->message("Success! Your details were updated. ");
-				redirect_to('public-view-profile.php');
-			} else {
-				$session->message("Error! Your details could not be updated. ");
-			}
-		}
-
-		if (isset($_POST['update'])){
-
-			if ($_POST['old_password'] == $user->password){
-
-				$user->password = $_POST['new_password'];
-
-				if ($admin_user->update()){
-					$session->message("Success! The password was updated. ");
-					redirect_to('public-view-profile.php');
-				} else {
-					$session->message("Error! The user details could not be updated. ");
-				}
-			} else {
-				$session->message("Error! The existing password did not match. ");
-			}
-
-		}
-
-		if (isset($_POST['upload'])){
-
-			$photo = new Photograph();
-
-			$photo->commuter_id = $user->id;
-			$photo->photo_type = 9; // photo_type 9 is "User Profile"
-			$photo->attach_file_commuter($_FILES['file_upload'], $user->id, $user->first_name, $user->last_name);
-
-			if ($photo->save()){
-				$session->message("Success! The photo was uploaded successfully. ");
-				redirect_to('public-view-profile.php');
-			} else {
-				$message = join("<br />", $photo->errors);
-			}
-
-		}
-
-	} else {
-		//everyone else
-
-		$session->message("Error! You do not have sufficient priviledges to view the requested page. ");
-		redirect_to("index.php");
-
-	}
-
-} else {
-	//not logged in... GTFO!
-
-	$session->message("Error! You must login to view the requested page. ");
-	redirect_to("login.php");
-}
-
+require_once("./includes/page-scripts/public-view-profile.php");
 ?>
 
 <!DOCTYPE html>
@@ -100,7 +27,7 @@ if ($session->is_logged_in()){
 		 	if (!empty($profile_picture->filename)) {
 		 		echo '<img src="../' . $profile_picture->image_path() . '" width="200" class="img-rounded" />';
 		 	} else {
-		 		echo '<img src="img/default-prof-pic.jpg" width="200" class="img-rounded" alt="Please upload a profile picture" />';
+		 		echo '<img src="assets/img/default-prof-pic.jpg" width="200" class="img-rounded" alt="Please upload a profile picture" />';
 		 	}
 		 ?>
 		 </div>
@@ -123,7 +50,7 @@ if ($session->is_logged_in()){
 
         <div class="span3">
 	        <div class="sidenav" data-spy="affix" data-offset-top="300">
-	        	<a href="index.php" class="btn btn-primary btn-block"><i class="icon-arrow-left icon-white"></i> Back to Home Page</a>
+	        	<a href="./" class="btn btn-primary btn-block"><i class="icon-arrow-left icon-white"></i> Back to Home Page</a>
 	        	<a href="public-list-feedback-items.php" class="btn btn-success btn-block"><i class="icon-thumbs-up icon-white"></i> View Feedback Given</a>
 	        	<a href="public-list-complaints.php" class="btn btn-danger btn-block"><i class="icon-exclamation-sign icon-white"></i> View Complaints Submitted</a>
 	        </div>

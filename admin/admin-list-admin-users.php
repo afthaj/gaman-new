@@ -1,6 +1,6 @@
 <?php
 require_once("../includes/initialize.php");
-require_once("../includes/page-scripts/admin-list-admin-users.php")
+require_once("../includes/page-scripts/admin-list-admin-users.php");
 ?>
 
 <!DOCTYPE html>
