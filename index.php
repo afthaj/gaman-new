@@ -31,7 +31,7 @@ require_once("includes/page-scripts/index.php");
 			    <input type="text" class="typeahead" placeholder="From" id="from" />
 			    <input type="text" class="typeahead" placeholder="To" id="to" />
 	        	<br />
-	        	<button class="btn btn-primary" onClick="findBusRoute(document.getElementById('from'), document.getElementById('to'), document.getElementById('bus_route_search_results'))">Find Bus Route</button>
+	        	<button class="btn btn-primary" id="main-search-button" onClick="findBusRoute(document.getElementById('from'), document.getElementById('to'), document.getElementById('bus_route_search_results'))">Find Bus Route</button>
         	</div>
 
 		  </div>

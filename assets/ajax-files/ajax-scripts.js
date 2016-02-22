@@ -2,11 +2,18 @@
 
 // main typeahead on home page to search for bus routes
 $(document).ready(function() {
+
   $('.typeahead').typeahead({
     name: 'name',
     prefetch: './assets/ajax-files/get-stops.php',
     limit: 5
   });
+
+  // document.getElementById("main-search-button").addEventListener("click", function(){
+  //     // document.getElementById("demo").innerHTML = "Hello World";
+  //     findBusRoute(document.getElementById('from'), document.getElementById('to'), document.getElementById('bus_route_search_results'))
+  // });
+
 });
 
 
@@ -104,14 +111,13 @@ function change_object_type(str, related_object) {
 
 	}
 
-
 function findBusRoute(from, to, search_results) {
 	var from_encoded = encodeURI(from.value);
 	var to_encoded = encodeURI(to.value);
 	var search_url = "./assets/ajax-files/search-for-stops.php?f=";
-		search_url += from_encoded;
-		search_url += "&t=";
-		search_url += to_encoded;
+  		search_url += from_encoded;
+  		search_url += "&t=";
+  		search_url += to_encoded;
 	if (window.XMLHttpRequest) {
 		// code for IE7+, Firefox, Chrome, Opera, Safari
 		request = new XMLHttpRequest();
@@ -192,8 +198,6 @@ function change_related_object_id(str, related_object_id) {
 	request.open("GET","./assets/ajax-files/get-objects-to-create-feedback.php?q=" + str, true);
 	request.send();
 }
-
-
 
 
 
@@ -299,3 +303,337 @@ function drawChart4() {
   var chart = new google.visualization.PieChart(document.getElementById('myPieChart'));
   chart.draw(data, {width: 800, height: 480, title: 'Atomospheric Composition'});
 }
+
+
+
+
+
+/*
+// typeahead for search bar
+
+var places = new Bloodhound({
+  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('place_name'),
+  queryTokenizer: Bloodhound.tokenizers.whitespace,
+  // prefetch: '/assets/ajax/places10.json'
+  prefetch: '/assets/ajax/get_places.php'
+});
+
+var questions = new Bloodhound({
+  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('title'),
+  queryTokenizer: Bloodhound.tokenizers.whitespace,
+  // prefetch: '/assets/ajax/questions10.json'
+  prefetch: '/assets/ajax/get_questions.php'
+});
+
+var cuisines = new Bloodhound({
+  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('cuisine_name'),
+  queryTokenizer: Bloodhound.tokenizers.whitespace,
+  // prefetch: '/assets/ajax/cuisines10.json'
+  prefetch: '/assets/ajax/get_cuisines.php'
+});
+
+var categories = new Bloodhound({
+  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('category_name'),
+  queryTokenizer: Bloodhound.tokenizers.whitespace,
+  // prefetch: '/assets/ajax/categories10.json'
+  prefetch: '/assets/ajax/get_categories.php'
+});
+
+var articles = new Bloodhound({
+  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('title'),
+  queryTokenizer: Bloodhound.tokenizers.whitespace,
+  prefetch: '/assets/ajax/get_articles.php'
+});
+
+var users = new Bloodhound({
+  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('username'),
+  queryTokenizer: Bloodhound.tokenizers.whitespace,
+  prefetch: '/assets/ajax/get_users.php'
+});
+
+localStorage.clear();
+places.initialize(true);
+questions.initialize(true);
+cuisines.initialize(true);
+categories.initialize(true);
+articles.initialize(true);
+users.initialize(true);
+
+$('#multiple-datasets .typeahead').typeahead({
+  highlight: true
+},
+{
+  name: 'places',
+  displayKey: 'place_name',
+  source: places.ttAdapter(),
+  templates: {
+    header: '<h3 class="section">Places</h3>',
+    suggestion: Handlebars.compile('<p>{{place_name}}</p>')
+  }
+},
+{
+  name: 'questions',
+  displayKey: 'title',
+  source: questions.ttAdapter(),
+  templates: {
+    header: '<h3 class="section">Questions</h3>',
+    suggestion: Handlebars.compile('<p>{{title}}</p>')
+  }
+},
+{
+  name: 'cuisines',
+  displayKey: 'cuisine_name',
+  source: cuisines.ttAdapter(),
+  templates: {
+    header: '<h3 class="section">Cuisines</h3>',
+    suggestion: Handlebars.compile('<p>{{cuisine_name}}</p>')
+  }
+},
+{
+  name: 'categories',
+  displayKey: 'category_name',
+  source: categories.ttAdapter(),
+  templates: {
+    header: '<h3 class="section">Categories</h3>',
+    suggestion: Handlebars.compile('<p>{{category_name}}</p>')
+  }
+},{
+  name: 'articles',
+  displayKey: 'title',
+  source: articles.ttAdapter(),
+  templates: {
+    header: '<h3 class="section">Articles</h3>',
+    suggestion: Handlebars.compile('<p>{{title}}</p>')
+  }
+},{
+  name: 'users',
+  displayKey: 'username',
+  source: users.ttAdapter(),
+  templates: {
+    header: '<h3 class="section">Users</h3>',
+    suggestion: Handlebars.compile('<p>{{username}}</p>')
+  }
+}).on('typeahead:opened', onOpened1)
+  .on('typeahead:selected', onAutocompleted1)
+  .on('typeahead:autocompleted', onSelected1);
+
+function onOpened1($e) {
+    console.log('opened');
+}
+
+function onAutocompleted1($e, datum) {
+    // console.log('autocompleted');
+    console.log(datum);
+    console.log(datum.obj_type);
+
+    if (datum.obj_type == "place") {
+
+    	// window.location = "/p/" + datum.slug;
+    	console.log(datum.slug);
+    	search(document.getElementById('searchInput'), datum.obj_type, document.getElementById('searchResults'));
+
+    } else if (datum.obj_type == "category") {
+
+    	// window.location = "/category/" + datum.slug;
+    	console.log(datum.slug);
+    	search(document.getElementById('searchInput'), datum.obj_type, document.getElementById('searchResults'));
+
+    } else if (datum.obj_type == "cuisine") {
+
+    	// window.location = "/cuisine/" + datum.slug;
+    	console.log(datum.slug);
+    	search(document.getElementById('searchInput'), datum.obj_type, document.getElementById('searchResults'));
+
+    } else if (datum.obj_type == "question"){
+
+    	// window.location = "/q/" + datum.unique_code;
+    	console.log(datum.unique_code);
+    	search(document.getElementById('searchInput'), datum.obj_type, document.getElementById('searchResults'));
+
+    } else if (datum.obj_type == "article"){
+
+    	// window.location = "/article/" + datum.slug;
+    	console.log(datum.slug);
+    	search(document.getElementById('searchInput'), datum.obj_type, document.getElementById('searchResults'));
+
+    } else if (datum.obj_type == "user"){
+
+    	// window.location = "/article/" + datum.slug;
+    	console.log(datum.username);
+    	search(document.getElementById('searchInput'), datum.obj_type, document.getElementById('searchResults'));
+
+    }
+}
+
+function onSelected1($e, datum) {
+    // console.log('selected');
+    console.log(datum);
+    console.log(datum.obj_type);
+
+    if (datum.obj_type == "place") {
+
+    	// window.location = "/p/" + datum.slug;
+    	console.log(datum.slug);
+    	search(document.getElementById('searchInput'), datum.obj_type, document.getElementById('searchResults'));
+
+    } else if (datum.obj_type == "category") {
+
+    	// window.location = "/category/" + datum.slug;
+    	console.log(datum.slug);
+    	search(document.getElementById('searchInput'), datum.obj_type, document.getElementById('searchResults'));
+
+    } else if (datum.obj_type == "cuisine") {
+
+    	// window.location = "/cuisine/" + datum.slug;
+    	console.log(datum.slug);
+    	search(document.getElementById('searchInput'), datum.obj_type, document.getElementById('searchResults'));
+
+    } else if (datum.obj_type == "question"){
+
+    	// window.location = "/q/" + datum.unique_code;
+    	console.log(datum.unique_code);
+    	search(document.getElementById('searchInput'), datum.obj_type, document.getElementById('searchResults'));
+
+    } else if (datum.obj_type == "article"){
+
+    	// window.location = "/article/" + datum.slug;
+    	console.log(datum.slug);
+    	search(document.getElementById('searchInput'), datum.obj_type, document.getElementById('searchResults'));
+
+    } else if (datum.obj_type == "user"){
+
+    	// window.location = "/article/" + datum.slug;
+    	console.log(datum.username);
+    	search(document.getElementById('searchInput'), datum.obj_type, document.getElementById('searchResults'));
+
+    }
+};
+
+$('#multiple-datasets-navbar .typeahead').typeahead({
+  highlight: true
+},
+{
+  name: 'places',
+  displayKey: 'place_name',
+  source: places.ttAdapter(),
+  templates: {
+    header: '<h3 class="section"><span class="fa fa-map-marker"></span> Places</h3>',
+    suggestion: Handlebars.compile('<p>{{place_name}}</p>')
+  }
+},
+{
+  name: 'questions',
+  displayKey: 'title',
+  source: questions.ttAdapter(),
+  templates: {
+    header: '<h3 class="section"><span class="fa fa-question-circle"></span> Questions</h3>',
+    suggestion: Handlebars.compile('<p>{{title}}</p>')
+  }
+},
+{
+  name: 'cuisines',
+  displayKey: 'cuisine_name',
+  source: cuisines.ttAdapter(),
+  templates: {
+    header: '<h3 class="section"><span class="fa fa-cutlery"></span> Cuisines</h3>',
+    suggestion: Handlebars.compile('<p>{{cuisine_name}}</p>')
+  }
+},
+{
+  name: 'categories',
+  displayKey: 'category_name',
+  source: categories.ttAdapter(),
+  templates: {
+    header: '<h3 class="section"><span class="fa fa-files-o"></span> Categories</h3>',
+    suggestion: Handlebars.compile('<p>{{category_name}}</p>')
+  }
+},{
+  name: 'articles',
+  displayKey: 'title',
+  source: articles.ttAdapter(),
+  templates: {
+    header: '<h3 class="section"><span class="fa fa-pencil"></span> Articles</h3>',
+    suggestion: Handlebars.compile('<p>{{title}}</p>')
+  }
+},{
+  name: 'users',
+  displayKey: 'username',
+  source: users.ttAdapter(),
+  templates: {
+    header: '<h3 class="section"><span class="fa fa-users"></span> Users</h3>',
+    suggestion: Handlebars.compile('<p>{{username}}</p>')
+  }
+}).on('typeahead:opened', onOpened)
+  .on('typeahead:selected', onAutocompleted)
+  .on('typeahead:autocompleted', onSelected);
+
+function onOpened($e) {
+    console.log('opened');
+}
+
+function onAutocompleted($e, datum) {
+    console.log('autocompleted');
+    console.log(datum);
+    console.log(datum.obj_type);
+
+    if (datum.obj_type == "place") {
+
+    	window.location = "/p/" + datum.slug;
+
+    } else if (datum.obj_type == "category") {
+
+    	window.location = "/category/" + datum.slug;
+
+    } else if (datum.obj_type == "cuisine") {
+
+    	window.location = "/cuisine/" + datum.slug;
+
+    } else if (datum.obj_type == "question"){
+
+    	window.location = "/q/" + datum.unique_code;
+
+    } else if (datum.obj_type == "article"){
+
+    	window.location = "/article/" + datum.slug;
+
+    } else if (datum.obj_type == "user"){
+
+    	window.location = "/user-activity/" + datum.username;
+
+    }
+}
+
+function onSelected($e, datum) {
+    console.log('selected');
+    console.log(datum);
+    console.log(datum.obj_type);
+
+    if (datum.obj_type == "place") {
+
+    	window.location = "/p/" + datum.slug;
+
+    } else if (datum.obj_type == "category") {
+
+    	window.location = "/category/" + datum.slug;
+
+    } else if (datum.obj_type == "cuisine") {
+
+    	window.location = "/cuisine/" + datum.slug;
+
+    } else if (datum.obj_type == "question"){
+
+    	window.location = "/q/" + datum.unique_code;
+
+    } else if (datum.obj_type == "article"){
+
+    	window.location = "/article/" + datum.slug;
+
+    } else if (datum.obj_type == "user"){
+
+    	window.location = "/user-activity/" + datum.username;
+
+    }
+};
+
+// end typeahead
+*/

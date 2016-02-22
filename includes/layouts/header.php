@@ -5,6 +5,7 @@
 
 <!-- CSS -->
 <link href="assets/css/bootswatch-flatly/bootstrap.css" rel="stylesheet">
+<!-- <link href="assets/css/bootswatch-flatly/bootstrap-3.3.6.css" rel="stylesheet"> -->
 <link href="assets/css/bootswatch-flatly/docs.css" rel="stylesheet">
 <link href="assets/css/bootswatch-flatly/gaman-styles.css" rel="stylesheet">
 
@@ -42,3 +43,6 @@
 <script type="text/javascript" src="./assets/ajax-files/ajax-scripts.js"></script>
 <script type="text/javascript" src="./assets/js/jquery.flexslider.js"></script>
 <script type="text/javascript" src="./assets/js/responsiveslides.js"></script>
+
+<!-- <script type="text/javascript" src="./assets/js/typeahead-0.11.1.js"></script> -->
+<script type="text/javascript" src="./assets/js/handlebars-1.3.0.js"></script>
