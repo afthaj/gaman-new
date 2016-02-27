@@ -5,7 +5,7 @@ $(document).ready(function() {
 
   $('.typeahead').typeahead({
     name: 'name',
-    prefetch: './assets/ajax-files/get-stops.php',
+    prefetch: '/assets/ajax-files/get-stops.php',
     limit: 5
   });
 
@@ -105,7 +105,7 @@ function change_object_type(str, related_object) {
 
 		}
 
-	request.open("GET","./assets/ajax-files/get-object-types.php?q=" + str, true);
+	request.open("GET","/assets/ajax-files/get-object-types.php?q=" + str, true);
 
 	request.send();
 
@@ -114,7 +114,7 @@ function change_object_type(str, related_object) {
 function findBusRoute(from, to, search_results) {
 	var from_encoded = encodeURI(from.value);
 	var to_encoded = encodeURI(to.value);
-	var search_url = "./assets/ajax-files/search-for-stops.php?f=";
+	var search_url = "/assets/ajax-files/search-for-stops.php?f=";
   		search_url += from_encoded;
   		search_url += "&t=";
   		search_url += to_encoded;
@@ -168,11 +168,11 @@ function change_related_object_type_and_id(str, related_object_type, related_obj
 
         }
 
-    request.open("GET","./assets/ajax-files/get-objects-to-create-complaint.php?q=" + str, true);
+    request.open("GET","/assets/ajax-files/get-objects-to-create-complaint.php?q=" + str, true);
 
     request.send();
 
-    request2.open("GET","./assets/ajax-files/get-object-types-to-create-complaint.php?q=" + str, true);
+    request2.open("GET","/assets/ajax-files/get-object-types-to-create-complaint.php?q=" + str, true);
 
     request2.send();
 
@@ -195,7 +195,7 @@ function change_related_object_id(str, related_object_id) {
 			related_object_id.innerHTML = request.responseText;
 			}
 		}
-	request.open("GET","./assets/ajax-files/get-objects-to-create-feedback.php?q=" + str, true);
+	request.open("GET","/assets/ajax-files/get-objects-to-create-feedback.php?q=" + str, true);
 	request.send();
 }
 
@@ -275,7 +275,7 @@ function drawChart2() {
 
 function drawChart3() {
   var jsonData = $.ajax({
-      url: "../../assets/ajax-files/getData.php",
+      url: "/assets/ajax-files/getData.php",
       dataType:"json",
       async: false
       }).responseText;

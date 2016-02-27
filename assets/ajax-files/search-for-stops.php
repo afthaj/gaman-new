@@ -19,9 +19,9 @@ if (!empty($from_string) && !empty($to_string)){
 		$routes_of_to_stop = $stop_route_object->get_routes_for_stop($to_stop->id);
 
 		echo '<div class="well">';
-		echo '<a href="public-read-stop.php?stopid=' . $stop_object->find_by_id($from_stop->id)->id . '" class="btn btn-info">' . $stop_object->find_by_id($from_stop->id)->name . '</a>';
+		echo '<a href="/public-read-stop.php?stopid=' . $stop_object->find_by_id($from_stop->id)->id . '" class="btn btn-info">' . $stop_object->find_by_id($from_stop->id)->name . '</a>';
 		echo ' <i class="icon-arrow-right"></i> ';
-		echo '<a href="public-read-stop.php?stopid=' . $stop_object->find_by_id($to_stop->id)->id . '" class="btn btn-info">' . $stop_object->find_by_id($to_stop->id)->name . '</a>';
+		echo '<a href="/public-read-stop.php?stopid=' . $stop_object->find_by_id($to_stop->id)->id . '" class="btn btn-info">' . $stop_object->find_by_id($to_stop->id)->name . '</a>';
 		echo '<br /><br />';
 
 
@@ -39,7 +39,7 @@ if (!empty($from_string) && !empty($to_string)){
 				if ($routes_of_from_stop[$i]->route_id == $routes_of_to_stop[$j]->route_id){
 					//one bus
 					$option_count = $j+1;
-					echo 'Option ' . $option_count . ' - ' . '<a href="public-read-route.php?routeid=' . $route_object->find_by_id($routes_of_to_stop[$j]->route_id)->id . '" class="btn btn-primary">' . $route_object->find_by_id($routes_of_to_stop[$j]->route_id)->route_number . '</a>';
+					echo 'Option ' . $option_count . ' - ' . '<a href="/public-read-route.php?routeid=' . $route_object->find_by_id($routes_of_to_stop[$j]->route_id)->id . '" class="btn btn-primary">' . $route_object->find_by_id($routes_of_to_stop[$j]->route_id)->route_number . '</a>';
 					if ($j < count($routes_of_to_stop)-1){
 						echo '<br /><br />';
 					} else {
