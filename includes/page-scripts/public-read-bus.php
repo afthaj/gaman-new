@@ -1,10 +1,5 @@
 <?php
 
-//init code
-$routes = BusRoute::find_all();
-$buses = Bus::find_all();
-$bus_personnel = BusPersonnel::find_all();
-
 $photo_types = $photo_type_object->get_photo_types("bus");
 $photos_of_bus = $photo_object->get_photos(3, $_GET['busid']);
 

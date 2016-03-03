@@ -1,6 +1,6 @@
 <?php
-require_once("/includes/initialize.php");
-require_once("/includes/page-scripts/index.php");
+require_once("./includes/initialize.php");
+require_once("./includes/page-scripts/index.php");
 ?>
 
 <!DOCTYPE html>
@@ -8,7 +8,7 @@ require_once("/includes/page-scripts/index.php");
 
   <head>
     <title>Home &middot; <?php echo WEB_APP_NAME; ?></title>
-    <?php require_once('/includes/layouts/header.php');?>
+    <?php require_once('./includes/layouts/header.php');?>
 
   </head>
 
@@ -19,7 +19,7 @@ require_once("/includes/page-scripts/index.php");
 
       <!-- Fixed navbar -->
       <?php $page = 'index';?>
-      <?php require_once('/includes/layouts/navbar.php');?>
+      <?php require_once('./includes/layouts/navbar.php');?>
 
       	<div class="jumbotron masthead">
 		  <div class="container">
@@ -132,7 +132,7 @@ require_once("/includes/page-scripts/index.php");
       <div id="push"></div>
     </div>
 
-    <?php require_once('/includes/layouts/footer.php');?>
+    <?php require_once('./includes/layouts/footer.php');?>
 
   </body>
 </html>

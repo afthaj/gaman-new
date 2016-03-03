@@ -6,8 +6,6 @@ $per_page = 20;
 $total_count = $route_object->count_all();
 $pagination = new Pagination($current_page, $per_page, $total_count);
 
-//$routes = BusRoute::find_all();
-
 $sql  = "SELECT * FROM routes";
 $sql .= " LIMIT " . $per_page;
 $sql .= " OFFSET " . $pagination->offset();
